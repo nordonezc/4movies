@@ -10,6 +10,7 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { SeriesComponent } from './pages/series/series.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     HomeComponent,
     MoviesComponent,
     SeriesComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
