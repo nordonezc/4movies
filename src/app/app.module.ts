@@ -12,6 +12,8 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SliderComponent } from './components/slider/slider.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { CardItemComponent } from './components/card-item/card-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { SliderComponent } from './components/slider/slider.component';
     MoviesComponent,
     SeriesComponent,
     CategoriesComponent,
-    SliderComponent
+    SliderComponent,
+    BannerComponent,
+    CardItemComponent
   ],
   imports: [
     BrowserModule,

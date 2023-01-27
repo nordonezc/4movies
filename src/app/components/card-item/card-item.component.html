@@ -1,0 +1,15 @@
+<a href="" class="card-item">
+  <div class="item-rating">
+    <i class="m-icon">star</i>
+    <span class="rate">{{ itemInfo.vote_average }}</span>
+    <span class="rate-max">/10</span>
+  </div>
+  <div class="item-img">
+    <img
+      class="item-bg-img"
+      [src]="'https://image.tmdb.org/t/p/w500' + itemInfo.poster_path"
+      alt=""
+    />
+  </div>
+  <div class="item-tittle">{{ itemInfo.title }}</div>
+</a>
