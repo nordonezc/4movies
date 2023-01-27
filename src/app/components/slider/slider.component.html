@@ -1,33 +1,36 @@
-<pre>{{ items[0] | json }}</pre>
 <div class="slider">
-  <div class="slide" *ngFor="let item of items">
-    <div class="slide-bg">
-      <img
-        class="slide-bg-img"
-        [src]="'https://image.tmdb.org/t/p/w500' + item.poster_path"
-        alt=""
-      />
-    </div>
-    <div class="slide-pane">
-      <h2 class="name">{{ item.title }}</h2>
-      <div class="meta">
-        <div class="info">
-          <div class="rating">
-            <span *ngFor="let stars of [0, 1, 2]" class="m-icon">star</span
-            ><span class="rating"
-              >{{ item.vote_average
-              }}<span class="rating-scale">/10</span></span
-            >
-            <span class="rating"
-              >{{ item.vote_count }}<span class="rating-scale">#Reviews</span>
-            </span>
-          </div>
-          <div class="year-release">{{ item.release_date | date: 'YYYY' }}</div>
-          <div class="desc">
-            {{ item.overview }}
+  <ng-container *ngFor="let item of items; let i = index">
+    <div class="slide" *ngIf="i == currentSlideIndex" @slideFade>
+      <div class="slide-bg">
+        <img
+          class="slide-bg-img"
+          [src]="'https://image.tmdb.org/t/p/w500' + item.poster_path"
+          alt=""
+        />
+      </div>
+      <div class="slide-pane">
+        <h2 class="name">{{ item.title }}</h2>
+        <div class="meta">
+          <div class="info">
+            <div class="rating">
+              <span *ngFor="let stars of [0, 1, 2]" class="m-icon">star</span
+              ><span class="rating"
+                >{{ item.vote_average
+                }}<span class="rating-scale">/10</span></span
+              >
+              <span class="rating"
+                >{{ item.vote_count }}<span class="rating-scale">#Reviews</span>
+              </span>
+            </div>
+            <div class="year-release">
+              {{ item.release_date | date: 'YYYY' }}
+            </div>
+            <div class="desc mt-6">
+              {{ item.overview }}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </ng-container>
 </div>
