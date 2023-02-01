@@ -8,4 +8,5 @@ import { Movie } from 'src/app/models/movie';
 })
 export class BannerComponent {
   @Input() itemList: Movie[] = [];
+  @Input() tittle: String = 'Default';
 }

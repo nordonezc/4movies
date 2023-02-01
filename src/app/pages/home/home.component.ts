@@ -7,13 +7,18 @@ import { MoviesService } from '../../services/movies.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  movies: any = [];
+  latestMovies: any = [];
+  popularMovies: any = [];
 
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.moviesService.getMovies().subscribe((movies: any) => {
-      this.movies = movies?.results;
+    this.moviesService.getMovies('now_playing').subscribe((movies: any) => {
+      this.latestMovies = movies?.results;
+    });
+
+    this.moviesService.getMovies('top_rated').subscribe((movies: any) => {
+      this.popularMovies = movies?.results;
     });
   }
 }

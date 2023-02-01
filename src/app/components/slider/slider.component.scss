@@ -53,6 +53,7 @@
           .rating {
             display: flex;
             .m-icon {
+              margin-right: 5px;
               color: $starColor;
             }
             > span {

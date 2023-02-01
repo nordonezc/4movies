@@ -1,0 +1,44 @@
+@import '../../../styles/colors';
+.item {
+  position: relative;
+  display: block;
+  min-width: 200px;
+  margin: 5px;
+  border-radius: 5px;
+  border: 1px solid $bgLight;
+  background-color: $bgGray;
+
+  &-img {
+    img {
+      width: 100%;
+      min-height: 275px;
+      max-height: 750px;
+      object-fit: scale-down;
+    }
+  }
+
+  &-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    background-color: $bgDark;
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  &-rating {
+    top: 10px;
+    right: 10px;
+    .m-icon {
+      margin-right: 5px;
+      color: $starColor;
+    }
+  }
+
+  &-tittle {
+    bottom: 10px;
+    left: 10px;
+    font-weight: bold;
+    margin: 0.5rem;
+  }
+}

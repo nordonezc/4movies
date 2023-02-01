@@ -1,2 +1,5 @@
-<app-slider [items]="movies"></app-slider> <app-banner></app-banner>
-<app-banner [itemList]="movies"></app-banner>
+<app-slider [items]="latestMovies"></app-slider>
+<app-banner
+  [tittle]="'Trending Movies'"
+  [itemList]="popularMovies"
+></app-banner>
