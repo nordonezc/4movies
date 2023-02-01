@@ -1,7 +1,10 @@
 <div class="container">
-  <h2>{{ tittle }}</h2>
+  <h2>{{ title }}</h2>
   <div class="grid">
-    <div class="col-12 md:col-6 lg:col-4 xl:2" *ngFor="let item of itemList">
+    <div
+      class="col-12 md:col-6 lg:col-4 xl:col-3"
+      *ngFor="let item of itemList"
+    >
       <app-card-item [itemInfo]="item"></app-card-item>
     </div>
   </div>

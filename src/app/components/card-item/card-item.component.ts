@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Movie } from 'src/app/models/movie';
+import { IMAGE_SIZE } from '../../constants/base-url';
 
 @Component({
   selector: 'app-card-item',
@@ -7,5 +8,6 @@ import { Movie } from 'src/app/models/movie';
   styleUrls: ['./card-item.component.scss']
 })
 export class CardItemComponent {
-  @Input() itemInfo: any = {};
+  @Input() itemInfo: Movie | any = {};
+  readonly imageSize = IMAGE_SIZE;
 }
