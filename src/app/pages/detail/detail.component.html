@@ -1,0 +1,6 @@
+<ng-container *ngIf="detailedInfo">
+  <app-slider [items]="[detailedInfo]" [isSlider]="false"></app-slider>
+</ng-container>
+<div class="container">
+  <pre>{{ detailedInfo | json }} </pre>
+</div>

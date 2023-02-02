@@ -22,12 +22,15 @@ import { IMAGE_SIZE } from '../../constants/base-url';
 })
 export class SliderComponent {
   @Input() items: Movie[] = [];
+  @Input() isSlider: boolean = true;
   currentSlideIndex: number = 0;
   imageSizes = IMAGE_SIZE;
 
   ngOnInit(): void {
-    //setInterval(() => {
-    //  this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
-    //}, 4000);
+    if (this.isSlider) {
+      setInterval(() => {
+        this.currentSlideIndex = ++this.currentSlideIndex % this.items.length;
+      }, 4000);
+    }
   }
 }

@@ -1,4 +1,9 @@
-<a href="" class="item">
+<a
+  href=""
+  class="item"
+  [routerLink]="['/movie/' + itemInfo.id]"
+  routerLinkActive="router-link-active"
+>
   <div class="item-text item-rating">
     <i class="m-icon">star</i>
     <span class="rate">{{ itemInfo.vote_average }}</span>
