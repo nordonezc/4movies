@@ -16,6 +16,8 @@ import { BannerComponent } from './components/banner/banner.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { DetailComponent } from './pages/detail/detail.component';
+import { TabViewModule } from 'primeng/tabview';
+import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,16 @@ import { DetailComponent } from './pages/detail/detail.component';
     SliderComponent,
     BannerComponent,
     CardItemComponent,
-    DetailComponent
+    DetailComponent,
+    VideoEmbedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    PaginatorModule
+    PaginatorModule,
+    TabViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]
