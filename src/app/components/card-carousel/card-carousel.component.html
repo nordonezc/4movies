@@ -1,0 +1,16 @@
+<p-carousel
+  *ngIf="infoCard"
+  [value]="infoCard"
+  [numVisible]="5"
+  [numScroll]="5"
+  [responsiveOptions]="responsiveOptions"
+>
+  <ng-template let-crew pTemplate="item">
+    <div class="crew">
+      <img [src]="this.imageSize + crew.profile_path" alt="" />
+      <span>
+        {{ crew.name }}
+      </span>
+    </div>
+  </ng-template>
+</p-carousel>

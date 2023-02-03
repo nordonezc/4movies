@@ -26,6 +26,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
+import { CardCarouselComponent } from './components/card-carousel/card-carousel.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { CarouselModule } from 'primeng/carousel';
     DetailComponent,
     VideoEmbedComponent,
     DescriptionItemComponent,
-    ImageEmbedComponent
+    ImageEmbedComponent,
+    CardCarouselComponent
   ],
   imports: [
     BrowserModule,

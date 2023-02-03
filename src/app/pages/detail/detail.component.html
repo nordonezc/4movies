@@ -7,8 +7,10 @@
     ><div class="grid">
       <app-description-item
         [detailedInfo]="detailedInfo"
-      ></app-description-item></div
-  ></p-tabPanel>
+      ></app-description-item>
+    </div>
+    <app-card-carousel [infoCard]="this.creditsInfo?.cast"></app-card-carousel>
+  </p-tabPanel>
   <p-tabPanel header="Videos">
     <div class="grid">
       <ng-container *ngFor="let videoResults of this.infoVideo?.results">

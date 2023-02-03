@@ -1,6 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ImageMovie, InfoVideo, MovieDetail } from '../../models/movie';
+import { first } from 'rxjs';
+import {
+  Credits,
+  ImageMovie,
+  InfoVideo,
+  MovieDetail
+} from '../../models/movie';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
@@ -8,18 +14,23 @@ import { MoviesService } from '../../services/movies.service';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnInit {
+export class DetailComponent implements OnInit, OnDestroy {
   detailedInfo: MovieDetail | null = null;
   infoVideo: InfoVideo | null = null;
   imageInfo: ImageMovie | null = null;
+  creditsInfo: Credits | null = null;
 
   constructor(
     private route: ActivatedRoute,
     private movieService: MoviesService
   ) {}
 
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
+
   ngOnInit() {
-    this.route.params.subscribe((params) => {
+    this.route.params.pipe(first()).subscribe((params) => {
       this.movieService
         .getSpecificMovie(params['id'])
         .subscribe((movieResponse) => {
@@ -34,6 +45,10 @@ export class DetailComponent implements OnInit {
 
       this.movieService.getMovieImages(params['id']).subscribe((imageVideo) => {
         this.imageInfo = imageVideo;
+      });
+
+      this.movieService.getCredits(params['id']).subscribe((crewReponse) => {
+        this.creditsInfo = crewReponse;
       });
     });
   }
