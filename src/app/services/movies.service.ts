@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { InfoVideo, MovieDetail, MovieDto } from '../models/movie';
+import { ImageMovie, InfoVideo, MovieDetail, MovieDto } from '../models/movie';
 import { of, switchMap } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,7 @@ export class MoviesService {
   baseUrl: string = 'https://api.themoviedb.org/3/';
   movies: string = 'movie/';
   videos: string = '/videos';
+  images: string = '/images';
   apiKey: string = '?api_key=';
 
   constructor(private http: HttpClient) {}
@@ -29,6 +30,12 @@ export class MoviesService {
   getSpecificMovie(idMovie: number = 250) {
     return this.http.get<MovieDetail>(
       this.baseUrl + this.movies + idMovie + this.apiKey
+    );
+  }
+
+  getMovieImages(idMovie: number = 250) {
+    return this.http.get<ImageMovie>(
+      this.baseUrl + this.movies + idMovie + this.images + this.apiKey
     );
   }
 

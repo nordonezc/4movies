@@ -1,0 +1,47 @@
+<div class="grid">
+  <div class="col-12 md:col-3 lg:col-3">
+    <img
+      class="poster"
+      [src]="imageSize + '/' + detailedInfo?.poster_path"
+      [alt]="detailedInfo?.title"
+    />
+  </div>
+  <div class="col-12 md:col-9 lg:col-9">
+    <h2>Overview</h2>
+    <p class="overview">{{ detailedInfo?.overview }}</p>
+    <div class="stat">
+      <div class="label">Release Date:</div>
+      <div class="value">
+        {{ detailedInfo?.release_date | date: 'dd-MM-YYYY' }}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="label">Original Language:</div>
+      <div class="value">
+        {{ detailedInfo?.original_language | uppercase }}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="label">Revenue:</div>
+      <div class="value">
+        {{ detailedInfo?.revenue | currency }}
+      </div>
+    </div>
+    <div class="stat">
+      <div class="label">Duration:</div>
+      <div class="value">{{ detailedInfo?.runtime }} min</div>
+    </div>
+    <div class="stat">
+      <div class="label">Status:</div>
+      <div class="value">{{ detailedInfo?.status }}</div>
+    </div>
+    <div class="stat">
+      <div class="label">Genres:</div>
+      <div class="value">
+        <li *ngFor="let genres of detailedInfo?.genres">
+          {{ genres.name }}
+        </li>
+      </div>
+    </div>
+  </div>
+</div>

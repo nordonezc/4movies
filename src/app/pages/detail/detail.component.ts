@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InfoVideo, MovieDetail } from '../../models/movie';
+import { ImageMovie, InfoVideo, MovieDetail } from '../../models/movie';
 import { MoviesService } from '../../services/movies.service';
-import { IMAGE_SIZE } from '../../constants/base-url';
 
 @Component({
   selector: 'app-detail',
@@ -11,8 +10,8 @@ import { IMAGE_SIZE } from '../../constants/base-url';
 })
 export class DetailComponent implements OnInit {
   detailedInfo: MovieDetail | null = null;
-  imageSize: string = IMAGE_SIZE.small;
   infoVideo: InfoVideo | null = null;
+  imageInfo: ImageMovie | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +31,10 @@ export class DetailComponent implements OnInit {
         .subscribe((videoInfo) => {
           this.infoVideo = videoInfo;
         });
+
+      this.movieService.getMovieImages(params['id']).subscribe((imageVideo) => {
+        this.imageInfo = imageVideo;
+      });
     });
   }
 }

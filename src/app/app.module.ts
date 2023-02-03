@@ -1,23 +1,31 @@
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
+
 import { HomeComponent } from './pages/home/home.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { SeriesComponent } from './pages/series/series.component';
+import { DetailComponent } from './pages/detail/detail.component';
 import { CategoriesComponent } from './pages/categories/categories.component';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { SliderComponent } from './components/slider/slider.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { CardItemComponent } from './components/card-item/card-item.component';
-import { PaginatorModule } from 'primeng/paginator';
-import { DetailComponent } from './pages/detail/detail.component';
-import { TabViewModule } from 'primeng/tabview';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
+import { ImageEmbedComponent } from './components/image-embed/image-embed.component';
+import { DescriptionItemComponent } from './components/description-item/description-item.component';
+
+import { PaginatorModule } from 'primeng/paginator';
+import { TabViewModule } from 'primeng/tabview';
+import { ImageModule } from 'primeng/image';
+import { CarouselModule } from 'primeng/carousel';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,9 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
     BannerComponent,
     CardItemComponent,
     DetailComponent,
-    VideoEmbedComponent
+    VideoEmbedComponent,
+    DescriptionItemComponent,
+    ImageEmbedComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,9 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
     HttpClientModule,
     BrowserAnimationsModule,
     PaginatorModule,
-    TabViewModule
+    TabViewModule,
+    ImageModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]

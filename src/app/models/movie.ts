@@ -50,31 +50,31 @@ export interface MovieDetail {
   vote_count: number;
 }
 
-interface Genre {
+export interface Genre {
   id: number;
   name: string;
 }
 
-interface ProductionCountries {
+export interface ProductionCountries {
   iso_3166_1: string;
   name: string;
 }
 
-interface ProductionCompanies {
+export interface ProductionCompanies {
   id: number;
   logo_path: string;
   name: string;
   origin_country: string;
 }
 
-interface BelongsToCollection {
+export interface BelongsToCollection {
   id: number;
   name: string;
   poster_path: string;
   backdrop_path: string;
 }
 
-interface SpokenLanguages {
+export interface SpokenLanguages {
   english_name: string;
   iso_639_1: string;
   name: string;
@@ -96,4 +96,21 @@ export interface ResultsVideo {
   published_at: string;
   official: boolean;
   id: string;
+}
+
+export interface ImageLocation {
+  aspect_ratio: number;
+  height: number;
+  iso_639_1: string;
+  file_path: string;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+
+export interface ImageMovie {
+  backdrops: ImageLocation[];
+  id: number;
+  logos: any[];
+  posters: ImageLocation[];
 }
