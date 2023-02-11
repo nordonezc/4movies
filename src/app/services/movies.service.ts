@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {
   Credits,
+  Genre,
   ImageMovie,
   InfoVideo,
   MovieDetail,
@@ -14,11 +15,18 @@ import { of, switchMap } from 'rxjs';
 })
 export class MoviesService {
   baseUrl: string = 'https://api.themoviedb.org/3/';
+
   movies: string = 'movie/';
   videos: string = '/videos';
   images: string = '/images';
   credits: string = '/credits';
+
+  discover: string = 'discover/movie';
+  genres: string = 'genre/movie/list';
+
   apiKey: string = '?api_key=';
+  byGenre: string = '&with_genres=';
+  byPage: string = '&page=';
 
   constructor(private http: HttpClient) {}
 
@@ -26,6 +34,22 @@ export class MoviesService {
     return this.http
       .get<MovieDto>(
         this.baseUrl + this.movies + `popular${this.apiKey}&page=${page}`
+      )
+      .pipe(
+        switchMap((movies) => {
+          return of(movies.results.slice(0, size));
+        })
+      );
+  }
+
+  searchMoviesByGenre(genre: number = 12, page: number = 1, size: number = 20) {
+    return this.http
+      .get<MovieDto>(
+        this.baseUrl +
+          this.discover +
+          this.apiKey +
+          `${this.byGenre + genre}` +
+          `${this.byPage + page}`
       )
       .pipe(
         switchMap((movies) => {
@@ -50,6 +74,10 @@ export class MoviesService {
     return this.http.get<InfoVideo>(
       this.baseUrl + this.movies + idMovie + this.videos + this.apiKey
     );
+  }
+
+  getGenres() {
+    return this.http.get<Genre>(this.baseUrl + this.genres + this.apiKey);
   }
 
   getCredits(idMovie: number = 250) {

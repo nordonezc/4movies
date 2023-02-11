@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from '../../models/movie';
 import { MoviesService } from '../../services/movies.service';
 
 @Component({
@@ -7,7 +8,7 @@ import { MoviesService } from '../../services/movies.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  latestMovies: any = [];
+  latestMovies: Movie[] = [];
   popularMovies: any = [];
   upcomingMovies: any = [];
 

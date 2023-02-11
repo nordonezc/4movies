@@ -149,3 +149,12 @@ export interface Credits {
   cast: Cast[];
   crew: Crew[];
 }
+
+export interface GenreItem {
+  id: number;
+  name: string;
+}
+
+export interface Genre {
+  genres: GenreItem[];
+}

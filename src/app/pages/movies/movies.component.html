@@ -1,13 +1,7 @@
+<app-banner [title]="''" [itemList]="movies"></app-banner>
 <p-paginator
   [rows]="20"
   [totalRecords]="10000"
   (onPageChange)="paginate($event)"
-  [rowsPerPageOptions]="[4, 20, 40, 80]"
-></p-paginator>
-<app-banner [title]="'All Movies'" [itemList]="movies"></app-banner>
-<p-paginator
-  [rows]="20"
-  [totalRecords]="10000"
-  (onPageChange)="paginate($event)"
-  [rowsPerPageOptions]="[4, 20, 40, 80]"
+  [rowsPerPageOptions]="rowsPerPage"
 ></p-paginator>
