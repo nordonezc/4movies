@@ -25,6 +25,7 @@ import { DescriptionItemComponent } from './components/description-item/descript
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 import { ImageModule } from 'primeng/image';
+import { InputTextModule } from 'primeng/inputtext';
 import { CarouselModule } from 'primeng/carousel';
 import { CardCarouselComponent } from './components/card-carousel/card-carousel.component';
 
@@ -54,7 +55,8 @@ import { CardCarouselComponent } from './components/card-carousel/card-carousel.
     PaginatorModule,
     TabViewModule,
     ImageModule,
-    CarouselModule
+    CarouselModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]

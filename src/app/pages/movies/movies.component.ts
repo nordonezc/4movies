@@ -12,6 +12,9 @@ export class MoviesComponent {
   movies: any = [];
   genreId: number | null = null;
   rowsPerPage: number[] = [4, 8, 20];
+  rows: number = 20;
+  page: number = 1;
+  search: any | null = null;
 
   constructor(
     private movieService: MoviesService,
@@ -24,24 +27,31 @@ export class MoviesComponent {
         this.searchMoviesByCategories(genreId['id']);
         this.genreId = genreId['id'];
       } else {
-        this.searchMovies(1, 20);
+        this.searchMovies(this.page, this.rows);
       }
     });
   }
 
   paginate(event: any) {
-    const page = event?.page + 1;
+    this.page = event.page + 1;
+    this.rows = event.rows;
     if (this.genreId) {
-      this.searchMoviesByCategories(this.genreId, page, event?.rows);
+      this.searchMoviesByCategories(this.genreId, this.page, this.rows);
     } else {
-      this.searchMovies(page, event?.rows);
+      this.searchChange();
     }
   }
 
-  private searchMovies(page: any, rows: number = 20) {
-    this.movieService.searchMovies(page, rows).subscribe((moviesResult) => {
-      this.movies = moviesResult;
-    });
+  searchChange() {
+    if (this.search) {
+      this.movieService
+        .findMovies(this.search, this.page, this.rows)
+        .subscribe((foundMovies) => {
+          this.movies = foundMovies;
+        });
+    } else {
+      this.searchMovies(this.page, this.rows);
+    }
   }
 
   private searchMoviesByCategories(
@@ -54,5 +64,11 @@ export class MoviesComponent {
       .subscribe((moviesResult) => {
         this.movies = moviesResult;
       });
+  }
+
+  private searchMovies(page: any, rows: number = 20) {
+    this.movieService.searchMovies(page, rows).subscribe((moviesResult) => {
+      this.movies = moviesResult;
+    });
   }
 }

@@ -6,7 +6,8 @@ import {
   ImageMovie,
   InfoVideo,
   MovieDetail,
-  MovieDto
+  MovieDto,
+  SearchMovies
 } from '../models/movie';
 import { of, switchMap } from 'rxjs';
 
@@ -17,27 +18,51 @@ export class MoviesService {
   baseUrl: string = 'https://api.themoviedb.org/3/';
 
   movies: string = 'movie/';
+  popular: string = 'popular';
+
   videos: string = '/videos';
   images: string = '/images';
   credits: string = '/credits';
 
+  search: string = 'search/movie';
   discover: string = 'discover/movie';
   genres: string = 'genre/movie/list';
 
-  apiKey: string = '?api_key=';
+  apiKey: string = '?api_key=2fa6205d5dffc2f17055ef4ecf5e9862';
   byGenre: string = '&with_genres=';
   byPage: string = '&page=';
+  byQuery: string = '&query=';
 
   constructor(private http: HttpClient) {}
 
   searchMovies(page: number = 1, size: number = 20) {
     return this.http
       .get<MovieDto>(
-        this.baseUrl + this.movies + `popular${this.apiKey}&page=${page}`
+        this.baseUrl +
+          this.movies +
+          `${this.popular + this.apiKey}` +
+          `${page ? this.byPage + page : ''}`
       )
       .pipe(
         switchMap((movies) => {
           return of(movies.results.slice(0, size));
+        })
+      );
+  }
+
+  findMovies(filter: any, page: number = 1, size: number = 20) {
+    const filterEncoded = encodeURIComponent(filter);
+    return this.http
+      .get<SearchMovies>(
+        this.baseUrl +
+          this.search +
+          this.apiKey +
+          `${this.byQuery + filterEncoded}` +
+          `${page ? this.byPage + page : ''}`
+      )
+      .pipe(
+        switchMap((results) => {
+          return of(results.results.slice(0, size));
         })
       );
   }
